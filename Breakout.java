@@ -56,11 +56,37 @@ public class Breakout extends GraphicsProgram {
 
 /** Number of turns */
 	private static final int NTURNS = 3;
+	
+	/** Brick color array */
+	private static final Color[] BRICK_COLOR_ARRAY = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN };
 
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		
+	
+		
+	}
+	
+	private void initBricks() {
+		int xStart =  ( WIDTH / 2 ) - (( NBRICKS_PER_ROW /2 ) * ( BRICK_WIDTH + BRICK_SEP ));
+		for ( int i = 0; i < NBRICK_ROWS; i++ ) {
+			int yStart = ( i * ( BRICK_HEIGHT + BRICK_SEP )) + BRICK_Y_OFFSET;
+			Color brickColor = BRICK_COLOR_ARRAY[i/2];
+			drawBricksRow(xStart, yStart, brickColor);
+		}
+	}
+
+	
+	private void drawBricksRow(int xStart, int yStart, Color brickColor) {
+		for ( int i = 0; i < NBRICKS_PER_ROW; i++ ) {
+			int x = xStart + i * (BRICK_WIDTH + BRICK_SEP); 
+			int y = yStart;
+			GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+			brick.setFilled(true);
+			brick.setColor(brickColor);
+			add(brick);
+		}
 	}
 
 }
