@@ -83,13 +83,16 @@ public class Breakout extends GraphicsProgram {
 			
 			createBrick (x + i * (BRICK_WIDTH + BRICK_SEP), y);
 			
+			Color brickColor = BRICK_COLOR_ARRAY[i/2];
+			
 		}
 	}
 	
 	private void createBrick (double x, double y) {
 		
 		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
-		
+		brick.setFilled(true);
+		brick.setColor(BRICK_COLOR_ARRAY[5]);
 		add(brick);
 	}
 }
