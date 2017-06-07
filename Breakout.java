@@ -87,7 +87,6 @@ public class Breakout extends GraphicsProgram {
 			}
 			
 		}
-	}
 	
 	private void createBrick (double x, double y) {
 		
