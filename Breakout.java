@@ -64,7 +64,7 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		
-		double x =  getWidth() - (( NBRICKS_PER_ROW /2 ) * ( BRICK_WIDTH + BRICK_SEP ));
+		double x = 0;
 		
 		double y = getHeight() - (BRICK_HEIGHT + BRICK_SEP) + BRICK_Y_OFFSET;
 		
