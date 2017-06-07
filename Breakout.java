@@ -73,6 +73,7 @@ public class Breakout extends GraphicsProgram {
 			createRow (x, y, (BRICK_WIDTH + BRICK_SEP)); 
 			
 			y -= (BRICK_HEIGHT + BRICK_SEP);
+			
 		}
 	}
 	
@@ -83,9 +84,6 @@ public class Breakout extends GraphicsProgram {
 			
 			createBrick (x + i * (BRICK_WIDTH + BRICK_SEP), y);
 			
-			for (int row = 2; row < BRICK_COLOR_ARRAY.length; row++) {
-			Color brickColor = BRICK_COLOR_ARRAY[row];
-		
 			}
 			
 		}
