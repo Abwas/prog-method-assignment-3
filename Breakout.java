@@ -94,9 +94,6 @@ public class Breakout extends GraphicsProgram {
 		brick.setFilled(true);
 		add(brick);
 		
-		if (row < 2) {
-			
-		}
 		
 	}
 }
