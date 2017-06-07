@@ -64,7 +64,7 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		
-		double x = 1.0;
+		double x = 0.5;
 		
 		double y = BRICK_Y_OFFSET;
 		
@@ -72,7 +72,7 @@ public class Breakout extends GraphicsProgram {
 			
 			createRow (x, y, (BRICK_WIDTH + BRICK_SEP)); 
 			
-			y -= (BRICK_HEIGHT + BRICK_SEP);
+			y += (BRICK_HEIGHT + BRICK_SEP);
 			
 			
 		}
