@@ -74,6 +74,7 @@ public class Breakout extends GraphicsProgram {
 			
 			y -= (BRICK_HEIGHT + BRICK_SEP);
 			
+			
 		}
 	}
 	
