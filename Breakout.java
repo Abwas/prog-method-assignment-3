@@ -85,6 +85,7 @@ public class Breakout extends GraphicsProgram {
 			
 			for (int row = 2; row < BRICK_COLOR_ARRAY.length; row++) {
 			Color brickColor = BRICK_COLOR_ARRAY[row];
+		
 			}
 			
 		}
@@ -94,7 +95,6 @@ public class Breakout extends GraphicsProgram {
 		
 		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
 		brick.setFilled(true);
-		brick.setColor(BRICK_COLOR_ARRAY[0]);
 		add(brick);
 	}
 }
