@@ -57,36 +57,34 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 	
-	/** Brick color array */
+/** Brick color array */
 	private static final Color[] BRICK_COLOR_ARRAY = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN };
 
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
 		
-	
+		double x =  getWidth() - (( NBRICKS_PER_ROW /2 ) * ( BRICK_WIDTH + BRICK_SEP ));
 		
-	}
-	
-	private void initBricks() {
-		int xStart =  ( WIDTH / 2 ) - (( NBRICKS_PER_ROW /2 ) * ( BRICK_WIDTH + BRICK_SEP ));
-		for ( int i = 0; i < NBRICK_ROWS; i++ ) {
-			int yStart = ( i * ( BRICK_HEIGHT + BRICK_SEP )) + BRICK_Y_OFFSET;
-			Color brickColor = BRICK_COLOR_ARRAY[i/2];
-			drawBricksRow(xStart, yStart, brickColor);
+		double y = getHeight() - (BRICK_HEIGHT + BRICK_SEP) + BRICK_Y_OFFSET;
+		
+		for (int row = 0; row < NBRICK_ROWS; row++) {
+			
+			createRow (x, y, (BRICK_WIDTH + BRICK_SEP)); 
+			
+			y += (BRICK_HEIGHT + BRICK_SEP);
 		}
 	}
-
 	
-	private void drawBricksRow(int xStart, int yStart, Color brickColor) {
-		for ( int i = 0; i < NBRICKS_PER_ROW; i++ ) {
-			int x = xStart + i * (BRICK_WIDTH + BRICK_SEP); 
-			int y = yStart;
-			GRect brick = new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
-			brick.setFilled(true);
-			brick.setColor(brickColor);
-			add(brick);
+	
+	private void createRow (double x, double y, int NBRICKS_PER_ROW) {
+		for (int i = 0; i < NBRICKS_PER_ROW; i++ ) {
+			createBrick (x + i * (BRICK_WIDTH + BRICK_SEP), y);
 		}
 	}
-
+	
+	private void createBrick (double x, double y) {
+		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
+		add(brick);
+	}
 }
