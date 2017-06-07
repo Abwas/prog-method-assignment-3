@@ -83,7 +83,7 @@ public class Breakout extends GraphicsProgram {
 			
 			createBrick (x + i * (BRICK_WIDTH + BRICK_SEP), y);
 			
-			x += (BRICK_WIDTH + BRICK_SEP);
+			x += BRICK_WIDTH;
 		}
 	}
 	
