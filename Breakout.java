@@ -66,7 +66,7 @@ public class Breakout extends GraphicsProgram {
 		
 		double x = 1.0;
 		
-		double y = getHeight() - 5 * (BRICK_HEIGHT + BRICK_Y_OFFSET);
+		double y = getHeight() -  (BRICK_HEIGHT + BRICK_Y_OFFSET);
 		
 		for (int row = 0; row < NBRICK_ROWS; row++) {
 			
@@ -93,6 +93,10 @@ public class Breakout extends GraphicsProgram {
 		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
 		brick.setFilled(true);
 		add(brick);
+		
+		if (row < 2) {
+			
+		}
 		
 	}
 }
