@@ -81,7 +81,7 @@ public class Breakout extends GraphicsProgram {
 				Y = y + (BRICK_HEIGHT + BRICK_SEP) * column;
 				
 				GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
-				
+				 
 				brick.setFilled(true);
 				
 				add(brick);
