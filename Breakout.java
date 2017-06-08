@@ -76,7 +76,7 @@ public class Breakout extends GraphicsProgram {
 			
 			Color color = null;
 			
-			if (row <= 2) {
+			if (row == 2) {
 				
 				color = Color.RED;
 				
