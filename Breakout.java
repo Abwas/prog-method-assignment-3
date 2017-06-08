@@ -114,7 +114,9 @@ public class Breakout extends GraphicsProgram {
 
 	
 	
-	/*private void createRow (double x, double y, int NBRICKS_PER_ROW) {
+	
+	//
+	private void createRow (double x, double y, int NBRICKS_PER_ROW) {
 		
 		for (int i = 0; i < NBRICKS_PER_ROW; i++ ) {
 			
@@ -124,12 +126,12 @@ public class Breakout extends GraphicsProgram {
 			
 		}
 	
-	private void createBrick (double x, double y) {
+		private void createBrick (double x, double y) {
 		
 		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
 		brick.setFilled(true);
 		add(brick);
 		
-	}*/
+	}
 
 }
