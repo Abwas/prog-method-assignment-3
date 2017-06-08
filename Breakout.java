@@ -80,15 +80,15 @@ public class Breakout extends GraphicsProgram {
 				
 				color = Color.RED;
 				
-			} else if (row <= 3) {
+			} else if (row <= 2 && row < 4) {
 				
 				color = Color.ORANGE;
 				
-			} else if (row <= 5) {
+			} else if (row <= 4 && row < 6) {
 				
 				color = Color.YELLOW;
 				
-			} else if (row <= 7) {
+			} else if (row <= 6 && row < 8) {
 				
 				color = Color.GREEN;
 				
