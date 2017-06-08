@@ -57,9 +57,6 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 	
-/** Brick color array */
-	private static final Color[] BRICK_COLOR_ARRAY = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN };
-
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
