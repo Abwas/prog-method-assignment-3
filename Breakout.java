@@ -78,23 +78,23 @@ public class Breakout extends GraphicsProgram {
 			
 			if (row < 2) {
 				
-				color = (BRICK_COLOR_ARRAY[0]);
+				color = Color.RED;
 				
 			} else if (row <= 3) {
 				
-				color = (BRICK_COLOR_ARRAY[1]);
+				color = Color.ORANGE;
 				
 			} else if (row <= 5) {
 				
-				color = (BRICK_COLOR_ARRAY[2]);
+				color = Color.YELLOW;
 				
 			} else if (row <= 7) {
 				
-				color = (BRICK_COLOR_ARRAY[3]);
+				color = Color.GREEN;
 				
 			} else {
 				
-				color = (BRICK_COLOR_ARRAY[4]);
+				color = Color.CYAN;
 			}
 			
 			
