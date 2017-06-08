@@ -70,39 +70,47 @@ public class Breakout extends GraphicsProgram {
 		
 		for (int row = 0; row < NBRICK_ROWS; row++) {
 			
-			createRow (x, y, (BRICK_WIDTH + BRICK_SEP)); 
+			 	x += (BRICK_WIDTH + BRICK_SEP) * row; 
 			
-			y += (BRICK_HEIGHT + BRICK_SEP);
-			
-			Color color = null;
+			for (int column = 0; column < NBRICKS_PER_ROW; column++) {
+				
+				y += (BRICK_HEIGHT + BRICK_SEP) * column;
+				
+				GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
+				
+				brick.setFilled(true);
+				
+				add(brick);
 			
 			if (row < 2) {
 				
-				color = Color.RED;
+				brick.setColor(Color.RED);
 				
 			} else if (row <= 3) {
 				
-				color = Color.ORANGE;
+				brick.setColor(Color.ORANGE);
 				
 			} else if (row <= 5) {
 				
-				color = Color.YELLOW;
+				brick.setColor(Color.YELLOW);
 				
 			} else if (row <= 7) {
 				
-				color = Color.GREEN;
+				brick.setColor(Color.GREEN);
 				
 			} else {
 				
-				color = Color.CYAN;
+				brick.setColor(Color.CYAN);
 			}
 			
-			
+			}
 		}
+		
 	}
+
 	
 	
-	private void createRow (double x, double y, int NBRICKS_PER_ROW) {
+	/*private void createRow (double x, double y, int NBRICKS_PER_ROW) {
 		
 		for (int i = 0; i < NBRICKS_PER_ROW; i++ ) {
 			
@@ -118,5 +126,6 @@ public class Breakout extends GraphicsProgram {
 		brick.setFilled(true);
 		add(brick);
 		
-	}
+	}*/
+
 }
