@@ -74,6 +74,29 @@ public class Breakout extends GraphicsProgram {
 			
 			y += (BRICK_HEIGHT + BRICK_SEP);
 			
+			Color color = null;
+			
+			if (row < 2) {
+				
+				color = (BRICK_COLOR_ARRAY[0]);
+				
+			} else if (row <= 3) {
+				
+				color = (BRICK_COLOR_ARRAY[1]);
+				
+			} else if (row <= 5) {
+				
+				color = (BRICK_COLOR_ARRAY[2]);
+				
+			} else if (row <= 7) {
+				
+				color = (BRICK_COLOR_ARRAY[3]);
+				
+			} else {
+				
+				color = (BRICK_COLOR_ARRAY[4]);
+			}
+			
 			
 		}
 	}
