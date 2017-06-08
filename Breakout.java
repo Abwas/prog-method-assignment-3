@@ -68,13 +68,17 @@ public class Breakout extends GraphicsProgram {
 		
 		double y = BRICK_Y_OFFSET;
 		
+		double X;
+		
+		double Y;
+		
 		for (int row = 0; row < NBRICK_ROWS; row++) {
 			
-			 	x += (BRICK_WIDTH + BRICK_SEP) * row; 
+			 	X = x + (BRICK_WIDTH + BRICK_SEP) * row; 
 			
 			for (int column = 0; column < NBRICKS_PER_ROW; column++) {
 				
-				y += (BRICK_HEIGHT + BRICK_SEP) * column;
+				Y = y + (BRICK_HEIGHT + BRICK_SEP) * column;
 				
 				GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
 				
