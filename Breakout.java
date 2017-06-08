@@ -92,6 +92,8 @@ public class Breakout extends GraphicsProgram {
 			}
 			
 				y += BRICK_HEIGHT + BRICK_SEP;
+				
+				x = 0.5;
 		}
 	
 	}
