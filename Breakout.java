@@ -70,55 +70,33 @@ public class Breakout extends GraphicsProgram {
 		
 		for (int row = 0; row < NBRICK_ROWS; row++) {
 			
-			createRow (x, y, (BRICK_WIDTH + BRICK_SEP)); 
+			for (int column = 0; column < NBRICKS_PER_ROW; column++) {
 			
-			y += (BRICK_HEIGHT + BRICK_SEP);
-			
-			Color color = null;
-			
-			if (row < 2) {
+				GRect brick = new GRect (BRICK_WIDTH, BRICK_HEIGHT);
 				
-				color = Color.RED;
+				brick.setFilled(true);
 				
-			} else if (row <= 2 && row < 4) {
+				if (row < 2) brick.setFillColor(Color.RED);
+					
+				if (row <= 2 && row < 4) brick.setFillColor(Color.ORANGE);
+					
+				if (row <= 4 && row < 6) brick.setFillColor(Color.YELLOW);
+					
+				if (row <= 6 && row < 8) brick.setFillColor(Color.GREEN);
+					
+				if (row <= 8 && row < 10) brick.setFillColor(Color.CYAN);
 				
-				color = Color.ORANGE;
+				add(brick, x, y);
 				
-			} else if (row <= 4 && row < 6) {
-				
-				color = Color.YELLOW;
-				
-			} else if (row <= 6 && row < 8) {
-				
-				color = Color.GREEN;
-				
-			} else {
-				
-				color = Color.CYAN;
+				x += BRICK_WIDTH + BRICK_SEP;
 			}
 			
-			
-		}
-	}
-	
-	
-	private void createRow (double x, double y, int brick) {
-		
-		for (int i = 0; i < NBRICKS_PER_ROW; i++ ) {
-			
-			createBrick (x + i * (BRICK_WIDTH + BRICK_SEP), y);
-			
-			}
-			
+				y += BRICK_HEIGHT + BRICK_SEP;
 		}
 	
-	private void createBrick (double x, double y) {
-		
-		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
-		
-		brick.setFilled(true);
-		
-		add(brick);
-		
 	}
+	
 }
+	
+ 
+
