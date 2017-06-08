@@ -80,13 +80,13 @@ public class Breakout extends GraphicsProgram {
 				
 				if (row < 2) brick.setColor(Color.RED);
 					
-				if (row == 2 || row == 3) brick.setColor(Color.ORANGE);
+				else if (row < 4) brick.setColor(Color.ORANGE);
 					
-				if (row == 4 || row == 5) brick.setColor(Color.YELLOW);
+				else if (row < 6) brick.setColor(Color.YELLOW);
 					
-				if (row == 6 || row == 7) brick.setColor(Color.GREEN);
+				else if (row < 8) brick.setColor(Color.GREEN);
 					
-				if (row == 8 || row == 9) brick.setColor(Color.CYAN);
+				else if (row < 10) brick.setColor(Color.CYAN);
 				
 				x += BRICK_WIDTH + BRICK_SEP;
 			}
