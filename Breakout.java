@@ -115,7 +115,7 @@ public class Breakout extends GraphicsProgram {
 	private void createBrick (double x, double y) {
 		
 		GRect brick = new GRect (x, y, BRICK_WIDTH, BRICK_HEIGHT);
-		brick.setFilled(false);
+		brick.setFilled(true);
 		add(brick);
 		
 	}
