@@ -57,6 +57,10 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 	
+/** instance variable*/
+	private GRect brick;
+	private GRect paddle;
+	
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
@@ -68,8 +72,6 @@ public class Breakout extends GraphicsProgram {
 			createBricks();
 			createPaddle();
 		}
-		
-		private GRect brick;
 		
 		private void createBricks() {
 			
@@ -105,8 +107,6 @@ public class Breakout extends GraphicsProgram {
 					x = 0.5;
 			}
 		}
-		
-		private GRect paddle;
 		
 		private void createPaddle() {
 			
