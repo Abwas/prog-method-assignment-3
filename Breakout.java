@@ -69,6 +69,8 @@ public class Breakout extends GraphicsProgram {
 			createPaddle();
 		}
 		
+		private GRect brick;
+		
 		private void createBricks() {
 			
 			double x = 0.5;
