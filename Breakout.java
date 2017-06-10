@@ -60,39 +60,61 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
+		setUpGame();
 		
-		double x = 0.5;
+	}
+	
+		private void setUpGame() {
+			createBricks();
+			createPaddle();
+		}
 		
-		double y = BRICK_Y_OFFSET;
-		
-		for (int row = 0; row < NBRICK_ROWS; row++) {
+		private void createBricks() {
 			
-			for (int column = 0; column < NBRICKS_PER_ROW; column++) {
+			double x = 0.5;
 			
-				GRect brick = new GRect (BRICK_WIDTH, BRICK_HEIGHT);
+			double y = BRICK_Y_OFFSET;
+			
+			for (int row = 0; row < NBRICK_ROWS; row++) {
 				
-				brick.setFilled(true);
+				for (int column = 0; column < NBRICKS_PER_ROW; column++) {
 				
-				add(brick, x, y);
+					GRect brick = new GRect (BRICK_WIDTH, BRICK_HEIGHT);
+					
+					brick.setFilled(true);
+					
+					add(brick, x, y);
+					
+					if (row < 2) brick.setColor(Color.RED);
+						
+					if (row == 2 || row == 3) brick.setColor(Color.ORANGE);
+						
+					if (row == 4 || row == 5) brick.setColor(Color.YELLOW);
+						
+					if (row == 6 || row == 7) brick.setColor(Color.GREEN);
+						
+					if (row == 8 || row == 9) brick.setColor(Color.CYAN);
+					
+					x += BRICK_WIDTH + BRICK_SEP;
+				}
 				
-				if (row < 2) brick.setColor(Color.RED);
+					y += BRICK_HEIGHT + BRICK_SEP;
 					
-				if (row == 2 || row == 3) brick.setColor(Color.ORANGE);
-					
-				if (row == 4 || row == 5) brick.setColor(Color.YELLOW);
-					
-				if (row == 6 || row == 7) brick.setColor(Color.GREEN);
-					
-				if (row == 8 || row == 9) brick.setColor(Color.CYAN);
-				
-				x += BRICK_WIDTH + BRICK_SEP;
+					x = 0.5;
 			}
-			
-				y += BRICK_HEIGHT + BRICK_SEP;
-				
-				x = 0.5;
 		}
 	
+		private void createPaddle() {
+			
+			double x = getWidth()/2 - PADDLE_WIDTH/2;
+			
+			double y = getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT;
+			
+			GRect paddle = new GRect (x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
+			
+			paddle.setFilled(true);			
+			
+		
 	}
 	
 }
