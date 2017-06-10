@@ -112,7 +112,7 @@ public class Breakout extends GraphicsProgram {
 			
 			double x = getWidth()/2 - PADDLE_WIDTH/2;
 			
-			double y = getHeight()/2 - (PADDLE_Y_OFFSET + PADDLE_HEIGHT);
+			double y = getHeight() - (PADDLE_Y_OFFSET + PADDLE_HEIGHT);
 			
 			GRect paddle = new GRect (x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
 			
