@@ -103,7 +103,9 @@ public class Breakout extends GraphicsProgram {
 					x = 0.5;
 			}
 		}
-	
+		
+		private GRect paddle;
+		
 		private void createPaddle() {
 			
 			double x = getWidth()/2 - PADDLE_WIDTH/2;
