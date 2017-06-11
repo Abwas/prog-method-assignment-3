@@ -65,6 +65,7 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		setUpGame();
+		addMouseListeners();
 		
 	}
 	
@@ -120,6 +121,16 @@ public class Breakout extends GraphicsProgram {
 			
 			add(paddle);
 	}
+		
+		public void mouseMoved(MouseEvent e){
+			
+	        paddle.setLocation(e.getX() - PADDLE_WIDTH/2, paddle.getY());
+	        
+	        if (paddle.getX() <= 0) paddle.setLocation(0, paddle.getY());
+	        
+	        if (paddle.getX() + PADDLE_WIDTH >= getWidth()) paddle.setLocation(getWidth() - PADDLE_WIDTH, paddle.getY());
+	        
+	    }
 	
 }
 	
