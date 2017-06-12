@@ -60,6 +60,7 @@ public class Breakout extends GraphicsProgram {
 /** instance variable*/
 	private GRect brick;
 	private GRect paddle;
+	private GOval ball;
 	
 /* Method: run() */
 /** Runs the Breakout program. */
