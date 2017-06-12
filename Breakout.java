@@ -130,7 +130,7 @@ public class Breakout extends GraphicsProgram {
 			addMouseListeners();
 	}
 		
-		//add event listener that moves the paddle
+		//add mouse move event to the paddle
 		public void mouseMoved(MouseEvent e) {
 			
 			if ((e.getX() < getWidth() - PADDLE_WIDTH / 2) && (e.getX() > PADDLE_WIDTH / 2)) {
