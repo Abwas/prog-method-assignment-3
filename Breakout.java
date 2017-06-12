@@ -68,7 +68,8 @@ public class Breakout extends GraphicsProgram {
 		
 		
 	}
-	
+		
+		//setup the game environment
 		private void setUpGame() {
 			createBricks();
 			createPaddle();
@@ -81,9 +82,9 @@ public class Breakout extends GraphicsProgram {
 			
 			double y = BRICK_Y_OFFSET;
 			
-			for (int row = 0; row < NBRICK_ROWS; row++) {
+			for (int row = 0; row < NBRICK_ROWS; row++) {  //this creates the brick rows
 				
-				for (int column = 0; column < NBRICKS_PER_ROW; column++) {
+				for (int column = 0; column < NBRICKS_PER_ROW; column++) {   //this creates the brick columns
 				
 					brick = new GRect (BRICK_WIDTH, BRICK_HEIGHT);
 					
@@ -91,6 +92,7 @@ public class Breakout extends GraphicsProgram {
 					
 					add(brick, x, y);
 					
+					//this sets the various colors for the rows
 					if (row < 2) brick.setColor(Color.RED);
 						
 					if (row == 2 || row == 3) brick.setColor(Color.ORANGE);
