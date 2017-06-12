@@ -65,7 +65,7 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		setUpGame();
-		addMouseListeners();
+		
 		
 	}
 	
@@ -120,6 +120,8 @@ public class Breakout extends GraphicsProgram {
 			paddle.setFilled(true);		
 			
 			add(paddle);
+			
+			addMouseListeners();
 	}
 		
 		public void mouseMoved(MouseEvent e) {
