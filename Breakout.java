@@ -141,6 +141,7 @@ public class Breakout extends GraphicsProgram {
 	        
 	    }
 		
+		//create ball for the game
 		private void createBall() {
 			
 			double x = getWidth() / 2 - BALL_RADIUS;
