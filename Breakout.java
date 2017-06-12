@@ -139,6 +139,19 @@ public class Breakout extends GraphicsProgram {
 			}
 	        
 	    }
+		
+		private void createBall() {
+			
+			double x = getWidth() / 2 - BALL_RADIUS;
+			
+			double y = getHeight() / 2 - BALL_RADIUS;
+			
+			ball = new GOval (x, y, BALL_RADIUS, BALL_RADIUS);
+			
+			ball.setFilled(true);
+			
+			add(ball);
+		}
 	
 }
 	
