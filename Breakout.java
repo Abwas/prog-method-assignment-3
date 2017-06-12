@@ -74,6 +74,7 @@ public class Breakout extends GraphicsProgram {
 			createPaddle();
 		}
 		
+		//create the bricks for the game
 		private void createBricks() {
 			
 			double x = 0.5;
