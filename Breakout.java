@@ -109,6 +109,7 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 		
+		//create the paddle for the game
 		private void createPaddle() {
 			
 			double x = getWidth() / 2 - PADDLE_WIDTH / 2;
@@ -124,6 +125,7 @@ public class Breakout extends GraphicsProgram {
 			addMouseListeners();
 	}
 		
+		//add event listener that moves the paddle
 		public void mouseMoved(MouseEvent e) {
 			
 			if ((e.getX() < getWidth() - PADDLE_WIDTH / 2) && (e.getX() > PADDLE_WIDTH / 2)) {
