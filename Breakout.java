@@ -269,10 +269,10 @@ public class Breakout extends GraphicsProgram {
 	    }
 	 
 	    private void printGameOver() {
-	        gameOver = new GLabel ("Game Over", getWidth()/2, getHeight()/2);
+	        gameOver = new GLabel ("Game Over!", getWidth()/2, getHeight()/2);
 	        gameOver.move(-gameOver.getWidth()/2, -gameOver.getHeight());
 	        gameOver.setColor(Color.RED);
-	        add (gameOver);
+	        add(gameOver);
 	    }
 	
 	 
@@ -280,7 +280,7 @@ public class Breakout extends GraphicsProgram {
 	        Winner = new GLabel ("Winner!!", getWidth()/2, getHeight()/2);
 	        Winner.move(-Winner.getWidth()/2, -Winner.getHeight());
 	        Winner.setColor(Color.RED);
-	        add (Winner);
+	        add(Winner);
 	    }
 	    
 }
