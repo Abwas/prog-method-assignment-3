@@ -279,7 +279,7 @@ public class Breakout extends GraphicsProgram {
 	    //adds the "You Lose!" label
 	    private void printGameOver() {
 	    	
-	        gameOver = new GLabel ("You Lose!", getWidth() / 2, getHeight()/2);
+	        gameOver = new GLabel ("You Lose!", getWidth() / 2, getHeight() / 2);
 	        
 	        gameOver.move(-gameOver.getWidth() / 2, -gameOver.getHeight());
 	        
