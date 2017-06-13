@@ -221,11 +221,8 @@ public class Breakout extends GraphicsProgram {
 	        	if(ball.getY() >= getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 && ball.getY() < getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 + 4) {
 	                vy = -vy;    
 	            }
-	        }
-	        //since we lay down a row of bricks, the last brick in the brick wall is assigned the value brick.
-	        //so we narrow it down by saying that the collier does not equal to a paddle or null, 
-	        //so all that is left is the brick
-	        else if (collider != null) {
+	        	
+	        } else if (collider != null) {
 	            remove(collider); 
 	            brickCounter--;
 	            vy = -vy;
