@@ -64,6 +64,7 @@ public class Breakout extends GraphicsProgram {
 	private GRect brick;
 	private GRect paddle;
 	private GOval ball;
+	private GObject collider;
 	private GLabel Winner;
 	private GLabel gameOver;
 	private double vx;
@@ -221,7 +222,7 @@ public class Breakout extends GraphicsProgram {
 	        }
 	 
 	        //check for other objects
-	        GObject collider = getCollidingObject();
+	        collider = getCollidingObject();
 	        if (collider == paddle) {
 	            /* We need to make sure that the ball only bounces off the top part of the paddle  
 	             * and also that it doesn't &quot;stick&quot; to it if different sides of the ball hit the paddle quickly and get the ball &quot;stuck&quot; on the paddle.
