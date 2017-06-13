@@ -175,9 +175,13 @@ public class Breakout extends GraphicsProgram {
 		private void createBall() {
 			
 			double x = getWidth() / 2 - BALL_RADIUS;
+			
 			double y = getHeight() / 2 - BALL_RADIUS;
+			
 			ball = new GOval (x, y, BALL_RADIUS, BALL_RADIUS);
+			
 			ball.setFilled(true);
+			
 			add(ball);
 			
 		}
@@ -199,10 +203,13 @@ public class Breakout extends GraphicsProgram {
 	        }
 	    }
 	 
+		//gets the velocity of the ball
 	    private void getBallVelocity() {
 	    	
 	        vy = 4.0;
+	        
 	        vx = rgen.nextDouble(1.0, 3.0);
+	        
 	        if (rgen.nextBoolean(0.5)) vx = -vx; 
 	 
 	    }
@@ -216,6 +223,7 @@ public class Breakout extends GraphicsProgram {
 	 
 	        //check for colliding objects
 	        collider = getCollidingObject();
+	        
 	        if (collider == paddle) {
 	 
 	        	if(ball.getY() >= getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 && ball.getY() < getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 + 4) {
@@ -223,11 +231,15 @@ public class Breakout extends GraphicsProgram {
 	            }
 	        	
 	        } else if (collider != null) {
+	        	
 	            remove(collider); 
 	            brickCounter--;
 	            vy = -vy;
+	            
 	        }
+	        
 	        pause(DELAY);
+	        
 	    }
 	 
 	    private GObject getCollidingObject() {
