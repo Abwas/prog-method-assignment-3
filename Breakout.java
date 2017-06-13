@@ -38,6 +38,9 @@ public class Breakout extends GraphicsProgram {
 /** Number of rows of bricks */
 	private static final int NBRICK_ROWS = 10;
 
+/** Total number of bricks */
+    private static final int TOTAL_BRICKS = NBRICK_ROWS * NBRICKS_PER_ROW;
+    
 /** Separation between bricks */
 	private static final int BRICK_SEP = 4;
 
@@ -61,6 +64,7 @@ public class Breakout extends GraphicsProgram {
 	private GRect brick;
 	private GRect paddle;
 	private GOval ball;
+	private GLabel result;
 	private double vx;
     private double vy;
     private RandomGenerator rgen = RandomGenerator.getInstance();
@@ -72,6 +76,7 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		setUpGame();
 		addMouseListeners();
+		
 		
 		
 	}
@@ -160,6 +165,77 @@ public class Breakout extends GraphicsProgram {
 			add(ball);
 		}
 	
+		private void getBallVelocity(){
+	        vx = rgen.nextDouble(1.0, 15.0);
+	        if (rgen.nextBoolean(0.5)) vx = - vx;
+	        vy = +5.0;
+	    }
+	    // makes the ball move
+	    private void moveBall(){
+	         
+	        ball.move(vx, vy);
+	        if (ball.getY() <= 0) vy*=-1; // reverses the y direction when the ball top hits the wall
+	        if (ball.getX() + BALL_RADIUS*2 >= getWidth() || ball.getX() <= 0) vx*=-1; // reverses the x direction when the ball hits the wall
+	         
+	    }
+	    // checks if there was a collision and, if brick, removes the colliding object
+	    private void checkForCollision(){
+	        GObject collider = getCollidingObject();
+	        if (collider == paddle){
+	            vy*=-1;
+	        }
+	        else if (collider != null){
+	            vy*=-1;
+	            remove(collider);
+	            brickCounter++;
+	        }
+	    }
+	    // captures the object with which the ball has just collide
+	    private GObject getCollidingObject(){
+	        if (getElementAt(ball.getX(), ball.getY()) != null)  return getElementAt(ball.getX(), ball.getY());
+	        else if (getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY()) != null) return getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY()); 
+	        else if (getElementAt(ball.getX(), ball.getY() + 2*BALL_RADIUS) != null) return getElementAt(ball.getX(), ball.getY() + 2*BALL_RADIUS);
+	        else if (getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY() + 2*BALL_RADIUS) != null) return getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY() + 2*BALL_RADIUS);
+	        else return null;
+	    }
+	    private void playGame(){
+	        while (turn < NTURNS){
+	            waitForClick();
+	            getBallVelocity();
+	            while (brickCounter < TOTAL_BRICKS){
+	                moveBall();
+	                checkForCollision();
+	                pause(50);
+	                if (ball.getY() == getHeight() - BALL_RADIUS*2){
+	                    remove(ball);
+	                    turn ++;
+	                    break;
+	                }
+	            }
+	        }   
+	        printResult();
+	    }
+	    // prints whether the player wins or loses
+	    private void printResult(){
+	        // creates winner GLabel
+	        result = new GLabel ("You Win!!");
+	        // GLabel coordinates
+	        double x = getWidth()/2 - result.getWidth()/2;
+	        double y = getHeight()/2;
+	         
+	        // condition to win
+	        if (brickCounter == TOTAL_BRICKS) {
+	             
+	            add (result, x, y);
+	        }
+	        // condition to lose
+	        else if (turn == NTURNS){
+	        //  creates loser GLabel
+	            result = new GLabel ("You lose");
+	            add (result, x, y);
+	        }
+	    }
+	    
 }
 	
  
