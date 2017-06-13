@@ -187,6 +187,7 @@ public class Breakout extends GraphicsProgram {
 		private void playGame() {
 	        waitForClick();
 	        getBallVelocity();
+	        bounceClip.play();
 	        while (true) {
 	            moveBall();
 	            if (ball.getY() >= getHeight()) {
