@@ -169,7 +169,7 @@ public class Breakout extends GraphicsProgram {
 		private void getBallVelocity(){
 	        vx = rgen.nextDouble(1.0, 3.0);
 	        if (rgen.nextBoolean(0.5)) vx = - vx;
-	        vy = +5.0;
+	        vy = 5.0;
 	    }
 	    // makes the ball move
 	    private void moveBall(){
