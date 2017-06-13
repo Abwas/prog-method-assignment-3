@@ -242,6 +242,7 @@ public class Breakout extends GraphicsProgram {
 	        
 	    }
 	 
+	    //this gets the graphical object with which the ball has collided
 	    private GObject getCollidingObject() {
 	 
 	        if((getElementAt(ball.getX(), ball.getY())) != null) {
