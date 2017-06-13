@@ -203,6 +203,7 @@ public class Breakout extends GraphicsProgram {
 	        while (turn < NTURNS){
 	            waitForClick();
 	            getBallVelocity();
+	            createBall();
 	            while (brickCounter < TOTAL_BRICKS){
 	                moveBall();
 	                checkForCollision();
