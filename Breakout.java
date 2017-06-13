@@ -61,11 +61,17 @@ public class Breakout extends GraphicsProgram {
 	private GRect brick;
 	private GRect paddle;
 	private GOval ball;
+	private double vx;
+    private double vy;
+    private RandomGenerator rgen = RandomGenerator.getInstance();
+    private int turn = 0;
+    private int brickCounter = 0;
 	
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
 		setUpGame();
+		addMouseListeners();
 		
 		
 	}
@@ -114,7 +120,7 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 		
-		//create the paddle for the game
+		//creates the paddle for the game
 		private void createPaddle() {
 			
 			double x = getWidth() / 2 - PADDLE_WIDTH / 2;
@@ -126,11 +132,10 @@ public class Breakout extends GraphicsProgram {
 			paddle.setFilled(true);		
 			
 			add(paddle);
-			
-			addMouseListeners();
+
 	}
 		
-		//add mouse move event to the paddle
+		//adds mouse move event to track the paddle
 		public void mouseMoved(MouseEvent e) {
 			
 			if ((e.getX() < getWidth() - PADDLE_WIDTH / 2) && (e.getX() > PADDLE_WIDTH / 2)) {
@@ -141,7 +146,7 @@ public class Breakout extends GraphicsProgram {
 	        
 	    }
 		
-		//create ball for the game
+		//creates ball for the game
 		private void createBall() {
 			
 			double x = getWidth() / 2 - BALL_RADIUS;
