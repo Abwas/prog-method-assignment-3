@@ -193,13 +193,13 @@ public class Breakout extends GraphicsProgram {
 	        getBallVelocity();
 	        
 	        while (true) {
+	        	
 	            moveBall();
-	            if (ball.getY() >= getHeight()) {
-	                break;
-	            }
-	            if(brickCounter == 0) {
-	                break;
-	            }
+	            
+	            if (ball.getY() >= getHeight()) break;
+	            
+	            if(brickCounter == 0) break;
+	            
 	        }
 	    }
 	 
