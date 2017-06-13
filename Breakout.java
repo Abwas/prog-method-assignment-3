@@ -77,7 +77,6 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		println("This is a Breakout Game ");
 		
 		for(int i = 0; i < NTURNS; i++) {
 			
