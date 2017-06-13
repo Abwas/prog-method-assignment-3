@@ -60,6 +60,9 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 	
+/** Animation delay or pause time between ball moves */   
+    private static final int DELAY = 10;
+	
 /** instance variable*/
 	private GRect brick;
 	private GRect paddle;
@@ -75,11 +78,21 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		setUpGame();
-		addMouseListeners();
-		playGame();
-		
-		
+		for(int i=0; i < NTURNS; i++) {
+            setUpGame();
+            playGame();
+            if(brickCounter == 0) {
+                ball.setVisible(false);
+                printWinner();
+                break;
+            }
+            if(brickCounter > 0) {
+                removeAll();
+            }
+        }
+        if(brickCounter > 0) {
+            printGameOver();
+        }		
 		
 	}
 		
@@ -139,6 +152,8 @@ public class Breakout extends GraphicsProgram {
 			paddle.setFilled(true);		
 			
 			add(paddle);
+			
+			addMouseListeners();
 
 	}
 		
@@ -210,7 +225,7 @@ public class Breakout extends GraphicsProgram {
 	        if (collider == paddle) {
 	            /* We need to make sure that the ball only bounces off the top part of the paddle  
 	             * and also that it doesn't &quot;stick&quot; to it if different sides of the ball hit the paddle quickly and get the ball &quot;stuck&quot; on the paddle.
-	             * I ran &quot;println (&quot;vx: &quot; + vx + &quot;, vy: &quot; + vy + &quot;, ballX: &quot; + ball.getX() + &quot;, ballY: &quot; +ball.getY());&quot;
+	             * I ran "println ("vx: " + vx + ", vy: &quot; + vy + &quot;, ballX: &quot; + ball.getX() + &quot;, ballY: &quot; +ball.getY());&quot;
 	             * and found that the ball.getY() changes by 4 every time, instead of 1,
 	             * so it never reaches exactly the the height at which the ball hits the paddle (paddle height + ball height), 
 	             * therefore, I estimate the point to be greater or equal to the height at which the ball hits the paddle, 
