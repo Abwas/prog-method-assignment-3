@@ -190,7 +190,6 @@ public class Breakout extends GraphicsProgram {
 		private void playGame() {
 			
 	        waitForClick();
-	        bounceClip.play();
 	        getBallVelocity();
 	        
 	        while (true) {
@@ -233,7 +232,8 @@ public class Breakout extends GraphicsProgram {
 	        	
 	        } else if (collider != null) {
 	        	
-	            remove(collider); 
+	            remove(collider);
+	            bounceClip.play();
 	            brickCounter--;
 	            vy = -vy;
 	            
