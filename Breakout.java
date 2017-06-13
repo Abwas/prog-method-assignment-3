@@ -60,38 +60,25 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 	
-/** Animation delay or pause time between ball moves */   
-    private static final int DELAY = 10;
-	
 /** instance variable*/
 	private GRect brick;
 	private GRect paddle;
 	private GOval ball;
-	private GLabel Winner;
-	private GLabel gameOver;
+	private GLabel result;
 	private double vx;
     private double vy;
     private RandomGenerator rgen = RandomGenerator.getInstance();
     private int turn = 0;
-    private int brickCounter = 100;
+    private int brickCounter = 0;
 	
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		for(int i = 0; i < NTURNS; i++) {
-            setUpGame();
-            playGame();
-            
-            if(brickCounter == 0) {
-                ball.setVisible(false);
-                printWinner();
-                break;
-            }
-            if(brickCounter > 0) removeAll();
-    
-        }
-        if(brickCounter > 0) printGameOver();
-       		
+		setUpGame();
+		addMouseListeners();
+		playGame();
+		
+		
 		
 	}
 		
@@ -151,8 +138,6 @@ public class Breakout extends GraphicsProgram {
 			paddle.setFilled(true);		
 			
 			add(paddle);
-			
-			addMouseListeners();
 
 	}
 		
@@ -181,105 +166,75 @@ public class Breakout extends GraphicsProgram {
 			add(ball);
 		}
 	
-		private void playGame() {
-	        waitForClick();
-	        getBallVelocity();
-	        while (true) {
-	            moveBall();
-	            if (ball.getY() >= getHeight()) {
-	                printGameOver();
-	                break;
-	            }
-	            if(brickCounter == 0) {
-	                ball.setVisible(false);
-	                printWinner();
-	                break;
-	            }
-	        }
-	    }
-	 
-	    private void getBallVelocity() {
-	        vy = 4.0;
+		private void getBallVelocity(){
 	        vx = rgen.nextDouble(1.0, 3.0);
-	        if (rgen.nextBoolean(0.5)) {
-	            vx = -vx;
-	        }
-	 
+	        if (rgen.nextBoolean(0.5)) vx = - vx;
+	        vy = +5.0;
 	    }
-	 
-	    private void moveBall() {
+	    // makes the ball move
+	    private void moveBall(){
+	         
 	        ball.move(vx, vy);
-	        //check for walls
-	        //need to get vx and vy at the point closest to 0 or the other edge
-	        if ((ball.getX() - vx <= 0 && vx < 0 )|| (ball.getX() + vx >= (getWidth() - BALL_RADIUS*2) && vx > 0)) {
-	            vx = -vx;
-	        }
-	        //We don't need to check for the bottom wall, since the ball can fall through the wall at that point
-	        if ((ball.getY() - vy <= 0 && vy < 0 )) {
-	            vy = -vy;
-	        }
-	 
-	        //check for other objects
+	        if (ball.getY() <= 0) vy*=-1; // reverses the y direction when the ball top hits the wall
+	        if (ball.getX() + BALL_RADIUS*2 >= getWidth() || ball.getX() <= 0) vx*=-1; // reverses the x direction when the ball hits the wall
+	         
+	    }
+	    // checks if there was a collision and, if brick, removes the colliding object
+	    private void checkForCollision(){
 	        GObject collider = getCollidingObject();
-	        if (collider == paddle) {
-	            /* We need to make sure that the ball only bounces off the top part of the paddle  
-	             * and also that it doesn't &quot;stick&quot; to it if different sides of the ball hit the paddle quickly and get the ball &quot;stuck&quot; on the paddle.
-	             * I ran "println ("vx: " + vx + ", vy: &quot; + vy + &quot;, ballX: &quot; + ball.getX() + &quot;, ballY: &quot; +ball.getY());&quot;
-	             * and found that the ball.getY() changes by 4 every time, instead of 1,
-	             * so it never reaches exactly the the height at which the ball hits the paddle (paddle height + ball height), 
-	             * therefore, I estimate the point to be greater or equal to the height at which the ball hits the paddle, 
-	             * but less than the height where the ball hits the paddle minus 4. 
-	             */
-	 
-	            if(ball.getY() >= getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS*2 && ball.getY() < getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS*2 + 4) {
-	                vy = -vy;    
+	        if (collider == paddle){
+	            vy*=-1;
+	        }
+	        else if (collider != null){
+	            vy*=-1;
+	            remove(collider);
+	            brickCounter++;
+	        }
+	    }
+	    // captures the object with which the ball has just collide
+	    private GObject getCollidingObject(){
+	        if (getElementAt(ball.getX(), ball.getY()) != null)  return getElementAt(ball.getX(), ball.getY());
+	        else if (getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY()) != null) return getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY()); 
+	        else if (getElementAt(ball.getX(), ball.getY() + 2*BALL_RADIUS) != null) return getElementAt(ball.getX(), ball.getY() + 2*BALL_RADIUS);
+	        else if (getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY() + 2*BALL_RADIUS) != null) return getElementAt(ball.getX() + 2*BALL_RADIUS, ball.getY() + 2*BALL_RADIUS);
+	        else return null;
+	    }
+	    private void playGame(){
+	        while (turn < NTURNS){
+	            waitForClick();
+	            getBallVelocity();
+	            while (brickCounter < TOTAL_BRICKS){
+	                moveBall();
+	                checkForCollision();
+	                pause(50);
+	                if (ball.getY() == getHeight() - BALL_RADIUS*2){
+	                    remove(ball);
+	                    turn ++;
+	                    break;
+	                }
 	            }
+	        }   
+	        printResult();
+	    }
+	    // prints whether the player wins or loses
+	    private void printResult(){
+	        // creates winner GLabel
+	        result = new GLabel ("You Win!!");
+	        // GLabel coordinates
+	        double x = getWidth()/2 - result.getWidth()/2;
+	        double y = getHeight()/2;
+	         
+	        // condition to win
+	        if (brickCounter == TOTAL_BRICKS) {
+	             
+	            add (result, x, y);
 	        }
-	        //since we lay down a row of bricks, the last brick in the brick wall is assigned the value brick.
-	        //so we narrow it down by saying that the collier does not equal to a paddle or null, 
-	        //so all that is left is the brick
-	        else if (collider != null) {
-	            remove(collider); 
-	            brickCounter--;
-	            vy = -vy;
+	        // condition to lose
+	        else if (turn == NTURNS){
+	        //  creates loser GLabel
+	            result = new GLabel ("You lose");
+	            add (result, x, y);
 	        }
-	        pause (DELAY);
-	    }
-	 
-	    private GObject getCollidingObject() {
-	 
-	        if((getElementAt(ball.getX(), ball.getY())) != null) {
-	             return getElementAt(ball.getX(), ball.getY());
-	          }
-	        else if (getElementAt( (ball.getX() + BALL_RADIUS*2), ball.getY()) != null ){
-	             return getElementAt(ball.getX() + BALL_RADIUS*2, ball.getY());
-	          }
-	        else if(getElementAt(ball.getX(), (ball.getY() + BALL_RADIUS*2)) != null ){
-	             return getElementAt(ball.getX(), ball.getY() + BALL_RADIUS*2);
-	          }
-	        else if(getElementAt((ball.getX() + BALL_RADIUS*2), (ball.getY() + BALL_RADIUS*2)) != null ){
-	             return getElementAt(ball.getX() + BALL_RADIUS*2, ball.getY() + BALL_RADIUS*2);
-	          }
-	        //need to return null if there are no objects present
-	        else{
-	             return null;
-	          }
-	 
-	    }
-	 
-	    private void printGameOver() {
-	        gameOver = new GLabel ("Game Over!", getWidth()/2, getHeight()/2);
-	        gameOver.move(-gameOver.getWidth()/2, -gameOver.getHeight());
-	        gameOver.setColor(Color.RED);
-	        add(gameOver);
-	    }
-	
-	 
-	    private void printWinner() {
-	        Winner = new GLabel ("Winner!!", getWidth()/2, getHeight()/2);
-	        Winner.move(-Winner.getWidth()/2, -Winner.getHeight());
-	        Winner.setColor(Color.RED);
-	        add(Winner);
 	    }
 	    
 }
