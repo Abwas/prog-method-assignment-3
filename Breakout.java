@@ -69,9 +69,10 @@ public class Breakout extends GraphicsProgram {
 	private GLabel gameOver;
 	private double vx;
     private double vy;
+    private int brickCounter = 100;
     private RandomGenerator rgen = RandomGenerator.getInstance();
     AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
-    private int brickCounter = 100;
+    
 	
 /* Method: run() */
 /** Runs the Breakout program. */
