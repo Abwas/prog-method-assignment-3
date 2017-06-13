@@ -69,6 +69,7 @@ public class Breakout extends GraphicsProgram {
 	private double vx;
     private double vy;
     private RandomGenerator rgen = RandomGenerator.getInstance();
+    AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
     private int brickCounter = 100;
 	
 /* Method: run() */
@@ -79,6 +80,7 @@ public class Breakout extends GraphicsProgram {
 			
             setUpGame();
             playGame();
+            bounceClip.play();
             
             if(brickCounter == 0) {
             	
@@ -241,7 +243,7 @@ public class Breakout extends GraphicsProgram {
 	            brickCounter--;
 	            vy = -vy;
 	        }
-	        pause (DELAY);
+	        pause(DELAY);
 	    }
 	 
 	    private GObject getCollidingObject() {
