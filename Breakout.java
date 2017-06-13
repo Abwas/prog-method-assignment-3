@@ -294,7 +294,7 @@ public class Breakout extends GraphicsProgram {
 	    	
 	        Winner = new GLabel ("You Win!!", getWidth() / 2, getHeight() / 2);
 	        
-	        Winner.move(-Winner.getWidth()/2, -Winner.getHeight());
+	        Winner.move(-Winner.getWidth() / 2, -Winner.getHeight());
 	        
 	        Winner.setColor(Color.BLUE);
 	        
