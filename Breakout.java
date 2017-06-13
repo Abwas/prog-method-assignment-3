@@ -232,8 +232,8 @@ public class Breakout extends GraphicsProgram {
 	        	
 	        } else if (collider != null) {
 	        	
+	        	bounceClip.play();
 	            remove(collider);
-	            bounceClip.play();
 	            brickCounter--;
 	            vy = -vy;
 	            
