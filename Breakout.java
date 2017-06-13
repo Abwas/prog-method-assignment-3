@@ -210,16 +210,15 @@ public class Breakout extends GraphicsProgram {
 	    private void moveBall() {
 	    	
 	        ball.move(vx, vy);
+	        
 	        //check for walls
 	        if ((ball.getX() - vx <= 0 && vx < 0 ) || (ball.getX() + vx >= (getWidth() - BALL_RADIUS * 2) && vx > 0)) vx = -vx;
-	        //We don't need to check for the bottom wall, since the ball can fall through the wall at that point
-	        //if ((ball.getY() - vy <= 0 && vy < 0 )) vy = -vy;
 	 
-	        //check for other objects
+	        //check for colliding objects
 	        collider = getCollidingObject();
 	        if (collider == paddle) {
 	 
-	        	if(ball.getY() >= getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 && ball.getY() < getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS*2 + 4) {
+	        	if(ball.getY() >= getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 && ball.getY() < getHeight() - PADDLE_Y_OFFSET - PADDLE_HEIGHT - BALL_RADIUS * 2 + 4) {
 	                vy = -vy;    
 	            }
 	        }
