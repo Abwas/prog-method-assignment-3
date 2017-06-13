@@ -175,20 +175,19 @@ public class Breakout extends GraphicsProgram {
 		private void createBall() {
 			
 			double x = getWidth() / 2 - BALL_RADIUS;
-			
 			double y = getHeight() / 2 - BALL_RADIUS;
-			
 			ball = new GOval (x, y, BALL_RADIUS, BALL_RADIUS);
-			
 			ball.setFilled(true);
-			
 			add(ball);
+			
 		}
 		
 		private void playGame() {
+			
 	        waitForClick();
-	        getBallVelocity();
 	        bounceClip.play();
+	        getBallVelocity();
+	        
 	        while (true) {
 	            moveBall();
 	            if (ball.getY() >= getHeight()) {
@@ -270,16 +269,16 @@ public class Breakout extends GraphicsProgram {
 	    }
 	 
 	    private void printGameOver() {
-	        gameOver = new GLabel ("You Lose!", getWidth()/2, getHeight()/2);
-	        gameOver.move(-gameOver.getWidth()/2, -gameOver.getHeight());
+	        gameOver = new GLabel ("You Lose!", getWidth() / 2, getHeight()/2);
+	        gameOver.move(-gameOver.getWidth() / 2, -gameOver.getHeight());
 	        gameOver.setColor(Color.RED);
 	        add(gameOver);
 	    }
 	 
 	    private void printWinner() {
-	        Winner = new GLabel ("You Win!!", getWidth()/2, getHeight()/2);
+	        Winner = new GLabel ("You Win!!", getWidth() / 2, getHeight() / 2);
 	        Winner.move(-Winner.getWidth()/2, -Winner.getHeight());
-	        Winner.setColor(Color.RED);
+	        Winner.setColor(Color.BLUE);
 	        add (Winner);
 	    }
 	
