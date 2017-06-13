@@ -78,21 +78,20 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		for(int i=0; i < NTURNS; i++) {
+		for(int i = 0; i < NTURNS; i++) {
             setUpGame();
             playGame();
+            
             if(brickCounter == 0) {
                 ball.setVisible(false);
                 printWinner();
                 break;
             }
-            if(brickCounter > 0) {
-                removeAll();
-            }
+            if(brickCounter > 0) removeAll();
+    
         }
-        if(brickCounter > 0) {
-            printGameOver();
-        }		
+        if(brickCounter > 0) printGameOver();
+       		
 		
 	}
 		
