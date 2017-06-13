@@ -233,36 +233,51 @@ public class Breakout extends GraphicsProgram {
 	    private GObject getCollidingObject() {
 	 
 	        if((getElementAt(ball.getX(), ball.getY())) != null) {
+	        	
 	             return getElementAt(ball.getX(), ball.getY());
+	             
 	          }
-	        else if (getElementAt( (ball.getX() + BALL_RADIUS*2), ball.getY()) != null ){
-	             return getElementAt(ball.getX() + BALL_RADIUS*2, ball.getY());
+	        
+	        else if (getElementAt( (ball.getX() + BALL_RADIUS * 2), ball.getY()) != null ){
+	        	
+	             return getElementAt(ball.getX() + BALL_RADIUS * 2, ball.getY());
+	             
 	          }
-	        else if(getElementAt(ball.getX(), (ball.getY() + BALL_RADIUS*2)) != null ){
-	             return getElementAt(ball.getX(), ball.getY() + BALL_RADIUS*2);
+	        
+	        else if(getElementAt(ball.getX(), (ball.getY() + BALL_RADIUS * 2)) != null ){
+	        	
+	             return getElementAt(ball.getX(), ball.getY() + BALL_RADIUS * 2);
+	             
 	          }
-	        else if(getElementAt((ball.getX() + BALL_RADIUS*2), (ball.getY() + BALL_RADIUS*2)) != null ){
-	             return getElementAt(ball.getX() + BALL_RADIUS*2, ball.getY() + BALL_RADIUS*2);
+	        
+	        else if(getElementAt((ball.getX() + BALL_RADIUS * 2), (ball.getY() + BALL_RADIUS * 2)) != null ){
+	        	
+	             return getElementAt(ball.getX() + BALL_RADIUS * 2, ball.getY() + BALL_RADIUS * 2);
+	             
 	          }
-	        //need to return null if there are no objects present
-	        else{
+	        //returns null if there are no objects present
+	        else {
 	             return null;
 	          }
 	 
 	    }
 	 
 	    private void printGameOver() {
+	    	
 	        gameOver = new GLabel ("You Lose!", getWidth() / 2, getHeight()/2);
 	        gameOver.move(-gameOver.getWidth() / 2, -gameOver.getHeight());
 	        gameOver.setColor(Color.RED);
 	        add(gameOver);
+	        
 	    }
 	 
 	    private void printWinner() {
+	    	
 	        Winner = new GLabel ("You Win!!", getWidth() / 2, getHeight() / 2);
 	        Winner.move(-Winner.getWidth()/2, -Winner.getHeight());
 	        Winner.setColor(Color.BLUE);
 	        add (Winner);
+	        
 	    }
 	
 }
